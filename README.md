@@ -10,6 +10,7 @@ with its own README.
 | ---------------------------------------- | ------------------------------------------------------------- |
 | [`matmul/`](matmul/README.md)            | Hand-written matrix multiply vs `np.matmul` (correctness + BLAS speedup). |
 | [`similarity/`](similarity/README.md)    | Dot product, cosine similarity, and nearest-vector search (the math behind embeddings, RAG, and attention). |
+| [`eigen/`](eigen/README.md)              | Eigenvalues & eigenvectors — verify `A v = λ v` in NumPy (3B1B Ch.13–14). |
 
 ## Setup (one time)
 
@@ -23,6 +24,7 @@ python3 -m venv .venv
 ```bash
 .venv/bin/python matmul/matmul_compare.py
 .venv/bin/python similarity/similarity.py
+.venv/bin/python eigen/eigen.py
 ```
 
 ### Running in IntelliJ IDEA
@@ -44,7 +46,10 @@ math-for-ml/
 ├── matmul/
 │   ├── matmul_compare.py
 │   └── README.md
-└── similarity/
-    ├── similarity.py
+├── similarity/
+│   ├── similarity.py
+│   └── README.md
+└── eigen/
+    ├── eigen.py
     └── README.md
 ```
