@@ -13,6 +13,7 @@
 | [`matmul/`](matmul/README.md) | ✅ complete | Hand-loop matmul matches `np.matmul` (~2e-14 error); BLAS is ~9,000× faster. |
 | [`similarity/`](similarity/README.md) | ✅ complete | Hand cosine matches NumPy; nearest-vector search *is* RAG retrieval / attention. |
 | [`eigen/`](eigen/README.md) | ✅ complete | Hand 2×2 eigenvalues match NumPy; verified `A v = λ v` — eigenvector only scales, others rotate. |
+| [`pca/`](pca/README.md) | ✅ complete | Hand PCA (covariance → eigen → project) matches `sklearn.PCA`; 2 PCs hold 97.8% of Iris variance. |
 
 ## Next up 🔜
 
@@ -24,8 +25,8 @@
   scores into weights, build a tiny single-head attention by hand vs NumPy.
 - **gradient descent** — fit a line by hand-derived gradients vs a closed-form /
   autograd check.
-- **PCA / SVD** — dimensionality reduction from scratch, verify against
-  `np.linalg.svd` (builds directly on `eigen/`).
+- **SVD directly** — redo `pca/` via `np.linalg.svd` (X = U S Vᵀ) instead of the
+  covariance route, and show the two agree (`λᵢ = sᵢ²/(n−1)`).
 
 ## Quick commands
 
@@ -37,6 +38,7 @@ python3 -m venv .venv && .venv/bin/python -m pip install -r requirements.txt
 .venv/bin/python matmul/matmul_compare.py
 .venv/bin/python similarity/similarity.py
 .venv/bin/python eigen/eigen.py
+.venv/bin/python pca/pca.py
 ```
 
 ## Repo shape
@@ -45,8 +47,9 @@ python3 -m venv .venv && .venv/bin/python -m pip install -r requirements.txt
 math-for-ml/
 ├── README.md         # index of experiments
 ├── STATUS.md         # this file — reopen snapshot
-├── requirements.txt  # numpy
+├── requirements.txt  # numpy, scikit-learn, matplotlib
 ├── matmul/           # matmul by hand vs np.matmul
 ├── similarity/       # dot / cosine / nearest-vector search
-└── eigen/            # eigenvalues/vectors — verify A v = λ v
+├── eigen/            # eigenvalues/vectors — verify A v = λ v
+└── pca/              # PCA from scratch on Iris vs sklearn.PCA
 ```

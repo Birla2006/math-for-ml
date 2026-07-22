@@ -11,6 +11,7 @@ with its own README.
 | [`matmul/`](matmul/README.md)            | Hand-written matrix multiply vs `np.matmul` (correctness + BLAS speedup). |
 | [`similarity/`](similarity/README.md)    | Dot product, cosine similarity, and nearest-vector search (the math behind embeddings, RAG, and attention). |
 | [`eigen/`](eigen/README.md)              | Eigenvalues & eigenvectors — verify `A v = λ v` in NumPy (3B1B Ch.13–14). |
+| [`pca/`](pca/README.md)                  | PCA from scratch on Iris (covariance → eigen → project), compared to `sklearn.PCA`. |
 
 ## Setup (one time)
 
@@ -19,12 +20,16 @@ python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 ```
 
+> `matmul/`, `similarity/`, and `eigen/` need only numpy; `pca/` also uses
+> scikit-learn (Iris + the comparison) and matplotlib (the plot).
+
 ## Run
 
 ```bash
 .venv/bin/python matmul/matmul_compare.py
 .venv/bin/python similarity/similarity.py
 .venv/bin/python eigen/eigen.py
+.venv/bin/python pca/pca.py
 ```
 
 ### Running in IntelliJ IDEA
@@ -42,14 +47,18 @@ python3 -m venv .venv
 ```
 math-for-ml/
 ├── README.md            # this index
-├── requirements.txt     # shared pinned dependency (numpy)
+├── requirements.txt     # pinned deps (numpy, scikit-learn, matplotlib)
 ├── matmul/
 │   ├── matmul_compare.py
 │   └── README.md
 ├── similarity/
 │   ├── similarity.py
 │   └── README.md
-└── eigen/
-    ├── eigen.py
+├── eigen/
+│   ├── eigen.py
+│   └── README.md
+└── pca/
+    ├── pca.py
+    ├── iris_pca.png
     └── README.md
 ```
