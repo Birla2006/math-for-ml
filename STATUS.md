@@ -14,6 +14,7 @@
 | [`similarity/`](similarity/README.md) | ✅ complete | Hand cosine matches NumPy; nearest-vector search *is* RAG retrieval / attention. |
 | [`eigen/`](eigen/README.md) | ✅ complete | Hand 2×2 eigenvalues match NumPy; verified `A v = λ v` — eigenvector only scales, others rotate. |
 | [`pca/`](pca/README.md) | ✅ complete | Hand PCA (covariance → eigen → project) matches `sklearn.PCA`; 2 PCs hold 97.8% of Iris variance. |
+| [`svd/`](svd/README.md) | ✅ complete | PCA via `np.linalg.svd` == covariance route == sklearn (`λᵢ=sᵢ²/(n−1)`); rank-k reconstruction (Eckart–Young). |
 
 ## Next up 🔜
 
@@ -25,8 +26,6 @@
   scores into weights, build a tiny single-head attention by hand vs NumPy.
 - **gradient descent** — fit a line by hand-derived gradients vs a closed-form /
   autograd check.
-- **SVD directly** — redo `pca/` via `np.linalg.svd` (X = U S Vᵀ) instead of the
-  covariance route, and show the two agree (`λᵢ = sᵢ²/(n−1)`).
 
 ## Quick commands
 
@@ -39,6 +38,7 @@ python3 -m venv .venv && .venv/bin/python -m pip install -r requirements.txt
 .venv/bin/python similarity/similarity.py
 .venv/bin/python eigen/eigen.py
 .venv/bin/python pca/pca.py
+.venv/bin/python svd/svd.py
 ```
 
 ## Repo shape
@@ -51,5 +51,6 @@ math-for-ml/
 ├── matmul/           # matmul by hand vs np.matmul
 ├── similarity/       # dot / cosine / nearest-vector search
 ├── eigen/            # eigenvalues/vectors — verify A v = λ v
-└── pca/              # PCA from scratch on Iris vs sklearn.PCA
+├── pca/              # PCA from scratch on Iris vs sklearn.PCA
+└── svd/              # PCA via SVD directly + low-rank reconstruction
 ```

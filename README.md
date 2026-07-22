@@ -12,6 +12,7 @@ with its own README.
 | [`similarity/`](similarity/README.md)    | Dot product, cosine similarity, and nearest-vector search (the math behind embeddings, RAG, and attention). |
 | [`eigen/`](eigen/README.md)              | Eigenvalues & eigenvectors — verify `A v = λ v` in NumPy (3B1B Ch.13–14). |
 | [`pca/`](pca/README.md)                  | PCA from scratch on Iris (covariance → eigen → project), compared to `sklearn.PCA`. |
+| [`svd/`](svd/README.md)                  | PCA via SVD directly (`X = U S Vᵀ`) + best rank-k reconstruction (Eckart–Young). |
 
 ## Setup (one time)
 
@@ -20,8 +21,8 @@ python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 ```
 
-> `matmul/`, `similarity/`, and `eigen/` need only numpy; `pca/` also uses
-> scikit-learn (Iris + the comparison) and matplotlib (the plot).
+> `matmul/`, `similarity/`, and `eigen/` need only numpy; `pca/` and `svd/` also
+> use scikit-learn (Iris + the comparison) and matplotlib (the plot).
 
 ## Run
 
@@ -30,6 +31,7 @@ python3 -m venv .venv
 .venv/bin/python similarity/similarity.py
 .venv/bin/python eigen/eigen.py
 .venv/bin/python pca/pca.py
+.venv/bin/python svd/svd.py
 ```
 
 ### Running in IntelliJ IDEA
@@ -57,8 +59,12 @@ math-for-ml/
 ├── eigen/
 │   ├── eigen.py
 │   └── README.md
-└── pca/
-    ├── pca.py
-    ├── iris_pca.png
+├── pca/
+│   ├── pca.py
+│   ├── iris_pca.png
+│   └── README.md
+└── svd/
+    ├── svd.py
+    ├── iris_svd_reconstruction.png
     └── README.md
 ```
